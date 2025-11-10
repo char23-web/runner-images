@@ -14,7 +14,22 @@
 ## About
 
 This repository contains the source code used to create the VM images for [GitHub-hosted runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners) used for Actions, as well as for [Microsoft-hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) used for Azure Pipelines.
-To build a VM machine from this repo's source, see the [instructions](docs/create-image-and-azure-resources.md).
+
+### Quick Start
+
+To quickly build and deploy runner images, use the provided helper scripts:
+
+```bash
+# Linux/macOS
+./run.sh build --image-type ubuntu2404 --subscription-id <id> --resource-group myRG --location eastus
+./run.sh deploy --image-name myImage --vm-name myVM --subscription-id <id> --resource-group myRG --location eastus --admin-username admin --admin-password 'SecurePass123!'
+
+# Windows/PowerShell
+.\run.ps1 build -ImageType ubuntu2404 -SubscriptionId <id> -ResourceGroupName myRG -AzureLocation eastus
+.\run.ps1 deploy -ImageName myImage -VirtualMachineName myVM -SubscriptionId <id> -ResourceGroupName myRG -AzureLocation eastus -AdminUsername admin -AdminPassword 'SecurePass123!'
+```
+
+For detailed instructions on building images, see the [full documentation](docs/create-image-and-azure-resources.md).
 
 ## Available Images
 
